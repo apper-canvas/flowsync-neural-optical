@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { useAuth } from "@/layouts/Root";
 import Sidebar from "@/components/organisms/Sidebar";
 
 const Layout = () => {
