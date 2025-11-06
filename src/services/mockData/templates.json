@@ -1,0 +1,450 @@
+[
+  {
+    "Id": 1,
+    "name": "Email to Slack",
+    "description": "Forward important emails to a Slack channel for team visibility",
+    "category": "Communication",
+    "popularity": 95,
+    "estimatedTime": "2 min",
+    "services": ["Gmail", "Slack"],
+    "triggers": 1,
+    "actions": 1,
+    "workflow": {
+      "name": "Email to Slack Notification",
+      "description": "Forward important emails to Slack channel",
+      "nodes": [
+        {
+          "id": "template-node-1",
+          "type": "trigger",
+          "service": "Gmail",
+          "action": "New Email",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "criteria": "priority:high"
+          }
+        },
+        {
+          "id": "template-node-2",
+          "type": "action", 
+          "service": "Slack",
+          "action": "Send Message",
+          "position": { "x": 400, "y": 200 },
+          "config": {
+            "channel": "#notifications",
+            "message": "New email from {{sender}}: {{subject}}"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-1",
+          "sourceNodeId": "template-node-1",
+          "targetNodeId": "template-node-2"
+        }
+      ]
+    }
+  },
+  {
+    "Id": 2,
+    "name": "Lead Generation",
+    "description": "Automatically create CRM contacts from form submissions",
+    "category": "Sales & Marketing",
+    "popularity": 87,
+    "estimatedTime": "3 min",
+    "services": ["Typeform", "HubSpot"],
+    "triggers": 1,
+    "actions": 1,
+    "workflow": {
+      "name": "Form to CRM Lead",
+      "description": "Convert form submissions to CRM contacts",
+      "nodes": [
+        {
+          "id": "template-node-3",
+          "type": "trigger",
+          "service": "Typeform",
+          "action": "Form Submitted",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "formId": "your-form-id"
+          }
+        },
+        {
+          "id": "template-node-4",
+          "type": "action",
+          "service": "HubSpot",
+          "action": "Create Contact",
+          "position": { "x": 400, "y": 200 },
+          "config": {
+            "firstName": "{{first_name}}",
+            "lastName": "{{last_name}}",
+            "email": "{{email}}",
+            "company": "{{company}}"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-2",
+          "sourceNodeId": "template-node-3",
+          "targetNodeId": "template-node-4"
+        }
+      ]
+    }
+  },
+  {
+    "Id": 3,
+    "name": "Daily Reports",
+    "description": "Generate and email daily business reports automatically",
+    "category": "Analytics", 
+    "popularity": 78,
+    "estimatedTime": "5 min",
+    "services": ["Schedule", "Google Sheets", "Gmail"],
+    "triggers": 1,
+    "actions": 2,
+    "workflow": {
+      "name": "Automated Daily Reports",
+      "description": "Generate daily reports and email them to team",
+      "nodes": [
+        {
+          "id": "template-node-5",
+          "type": "trigger",
+          "service": "Schedule",
+          "action": "Daily at 8 AM",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "time": "08:00",
+            "timezone": "America/New_York"
+          }
+        },
+        {
+          "id": "template-node-6",
+          "type": "action",
+          "service": "Google Sheets",
+          "action": "Generate Report",
+          "position": { "x": 300, "y": 200 },
+          "config": {
+            "spreadsheetId": "your-spreadsheet-id",
+            "range": "A1:Z1000"
+          }
+        },
+        {
+          "id": "template-node-7",
+          "type": "action",
+          "service": "Gmail",
+          "action": "Send Email",
+          "position": { "x": 500, "y": 200 },
+          "config": {
+            "to": "team@company.com",
+            "subject": "Daily Report - {{date}}",
+            "body": "Daily business report attached"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-3",
+          "sourceNodeId": "template-node-5",
+          "targetNodeId": "template-node-6"
+        },
+        {
+          "id": "template-conn-4",
+          "sourceNodeId": "template-node-6", 
+          "targetNodeId": "template-node-7"
+        }
+      ]
+    }
+  },
+  {
+    "Id": 4,
+    "name": "Social Media Cross-Post",
+    "description": "Share content across multiple social media platforms simultaneously",
+    "category": "Social Media",
+    "popularity": 82,
+    "estimatedTime": "4 min",
+    "services": ["Instagram", "Twitter", "Facebook"],
+    "triggers": 1,
+    "actions": 2,
+    "workflow": {
+      "name": "Multi-Platform Social Posting",
+      "description": "Cross-post Instagram content to other platforms",
+      "nodes": [
+        {
+          "id": "template-node-8",
+          "type": "trigger",
+          "service": "Instagram",
+          "action": "New Post",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "account": "@your_account"
+          }
+        },
+        {
+          "id": "template-node-9",
+          "type": "action",
+          "service": "Twitter",
+          "action": "Create Tweet",
+          "position": { "x": 350, "y": 150 },
+          "config": {
+            "text": "{{caption}}",
+            "includeImage": true
+          }
+        },
+        {
+          "id": "template-node-10",
+          "type": "action",
+          "service": "Facebook",
+          "action": "Create Post",
+          "position": { "x": 350, "y": 250 },
+          "config": {
+            "message": "{{caption}}",
+            "includeImage": true
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-5",
+          "sourceNodeId": "template-node-8",
+          "targetNodeId": "template-node-9"
+        },
+        {
+          "id": "template-conn-6",
+          "sourceNodeId": "template-node-8",
+          "targetNodeId": "template-node-10"
+        }
+      ]
+    }
+  },
+  {
+    "Id": 5,
+    "name": "File Backup System",
+    "description": "Automatically backup files between cloud storage services",
+    "category": "Productivity",
+    "popularity": 71,
+    "estimatedTime": "3 min",
+    "services": ["Dropbox", "Google Drive"],
+    "triggers": 1,
+    "actions": 1,
+    "workflow": {
+      "name": "Cloud Storage Backup",
+      "description": "Backup Dropbox files to Google Drive",
+      "nodes": [
+        {
+          "id": "template-node-11",
+          "type": "trigger",
+          "service": "Dropbox",
+          "action": "New File",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "folder": "/Important",
+            "fileTypes": ".pdf,.docx,.xlsx"
+          }
+        },
+        {
+          "id": "template-node-12",
+          "type": "action",
+          "service": "Google Drive",
+          "action": "Upload File",
+          "position": { "x": 400, "y": 200 },
+          "config": {
+            "folder": "Backups",
+            "renamePattern": "{{filename}}_backup"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-7",
+          "sourceNodeId": "template-node-11",
+          "targetNodeId": "template-node-12"
+        }
+      ]
+    }
+  },
+  {
+    "Id": 6,
+    "name": "Support Ticket Alerts",
+    "description": "Get instant notifications for high priority support tickets",
+    "category": "Customer Support",
+    "popularity": 65,
+    "estimatedTime": "4 min",
+    "services": ["Zendesk", "Slack", "Gmail"],
+    "triggers": 1,
+    "actions": 2,
+    "workflow": {
+      "name": "Priority Ticket Notifications",
+      "description": "Alert team about urgent support tickets",
+      "nodes": [
+        {
+          "id": "template-node-13",
+          "type": "trigger",
+          "service": "Zendesk",
+          "action": "New Ticket",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "priority": "high"
+          }
+        },
+        {
+          "id": "template-node-14",
+          "type": "action",
+          "service": "Slack",
+          "action": "Send Message",
+          "position": { "x": 300, "y": 150 },
+          "config": {
+            "channel": "#support-urgent",
+            "message": "🚨 High priority ticket: {{subject}}"
+          }
+        },
+        {
+          "id": "template-node-15",
+          "type": "action",
+          "service": "Gmail",
+          "action": "Send Email",
+          "position": { "x": 300, "y": 250 },
+          "config": {
+            "to": "support-manager@company.com",
+            "subject": "Urgent Support Ticket",
+            "body": "High priority ticket requires attention"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-8",
+          "sourceNodeId": "template-node-13",
+          "targetNodeId": "template-node-14"
+        },
+        {
+          "id": "template-conn-9",
+          "sourceNodeId": "template-node-13",
+          "targetNodeId": "template-node-15"
+        }
+      ]
+    }
+  },
+  {
+    "Id": 7,
+    "name": "Weekly Team Updates",
+    "description": "Send weekly progress updates to team members via Slack",
+    "category": "Team Management",
+    "popularity": 58,
+    "estimatedTime": "3 min",
+    "services": ["Schedule", "Google Sheets", "Slack"],
+    "triggers": 1,
+    "actions": 2,
+    "workflow": {
+      "name": "Weekly Team Progress",
+      "description": "Automated weekly team updates",
+      "nodes": [
+        {
+          "id": "template-node-16",
+          "type": "trigger",
+          "service": "Schedule",
+          "action": "Weekly",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "day": "Friday",
+            "time": "17:00"
+          }
+        },
+        {
+          "id": "template-node-17",
+          "type": "action",
+          "service": "Google Sheets",
+          "action": "Generate Report",
+          "position": { "x": 300, "y": 200 },
+          "config": {
+            "spreadsheetId": "team-progress-sheet",
+            "range": "A1:E100"
+          }
+        },
+        {
+          "id": "template-node-18",
+          "type": "action",
+          "service": "Slack",
+          "action": "Send Message",
+          "position": { "x": 500, "y": 200 },
+          "config": {
+            "channel": "#team-updates",
+            "message": "📊 Weekly team progress report is ready!"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-10",
+          "sourceNodeId": "template-node-16",
+          "targetNodeId": "template-node-17"
+        },
+        {
+          "id": "template-conn-11",
+          "sourceNodeId": "template-node-17",
+          "targetNodeId": "template-node-18"
+        }
+      ]
+    }
+  },
+  {
+    "Id": 8,
+    "name": "Event Registration",
+    "description": "Process event registrations and send confirmation emails",
+    "category": "Events",
+    "popularity": 44,
+    "estimatedTime": "5 min",
+    "services": ["Typeform", "Google Sheets", "Gmail"],
+    "triggers": 1,
+    "actions": 2,
+    "workflow": {
+      "name": "Event Registration Processing",
+      "description": "Handle event registrations automatically",
+      "nodes": [
+        {
+          "id": "template-node-19",
+          "type": "trigger",
+          "service": "Typeform",
+          "action": "Form Submitted",
+          "position": { "x": 100, "y": 200 },
+          "config": {
+            "formId": "event-registration-form"
+          }
+        },
+        {
+          "id": "template-node-20",
+          "type": "action",
+          "service": "Google Sheets",
+          "action": "Add Row",
+          "position": { "x": 300, "y": 200 },
+          "config": {
+            "spreadsheetId": "event-registrations",
+            "data": "{{name}},{{email}},{{registration_date}}"
+          }
+        },
+        {
+          "id": "template-node-21",
+          "type": "action",
+          "service": "Gmail",
+          "action": "Send Email",
+          "position": { "x": 500, "y": 200 },
+          "config": {
+            "to": "{{email}}",
+            "subject": "Event Registration Confirmed",
+            "body": "Thank you for registering for our event!"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "template-conn-12",
+          "sourceNodeId": "template-node-19",
+          "targetNodeId": "template-node-20"
+        },
+        {
+          "id": "template-conn-13",
+          "sourceNodeId": "template-node-20",
+          "targetNodeId": "template-node-21"
+        }
+      ]
+    }
+  }
+]

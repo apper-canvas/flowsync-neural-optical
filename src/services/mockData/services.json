@@ -1,0 +1,346 @@
+[
+  {
+    "Id": 1,
+    "name": "Gmail",
+    "icon": "Mail",
+    "category": "Email",
+    "triggers": [
+      {
+        "name": "New Email",
+        "description": "Triggers when a new email is received",
+        "fields": [
+          { "name": "criteria", "label": "Filter Criteria", "type": "text", "placeholder": "e.g., priority:high" }
+        ]
+      },
+      {
+        "name": "Email Starred",
+        "description": "Triggers when an email is starred",
+        "fields": []
+      }
+    ],
+    "actions": [
+      {
+        "name": "Send Email",
+        "description": "Send an email message",
+        "fields": [
+          { "name": "to", "label": "To", "type": "email", "required": true },
+          { "name": "subject", "label": "Subject", "type": "text", "required": true },
+          { "name": "body", "label": "Body", "type": "textarea", "required": true }
+        ]
+      },
+      {
+        "name": "Forward Email",
+        "description": "Forward an email to another recipient",
+        "fields": [
+          { "name": "to", "label": "Forward To", "type": "email", "required": true }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "name": "Slack",
+    "icon": "MessageSquare", 
+    "category": "Communication",
+    "triggers": [
+      {
+        "name": "New Message",
+        "description": "Triggers when a new message is posted",
+        "fields": [
+          { "name": "channel", "label": "Channel", "type": "text", "placeholder": "#general" }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Send Message",
+        "description": "Send a message to a Slack channel",
+        "fields": [
+          { "name": "channel", "label": "Channel", "type": "text", "required": true, "placeholder": "#general" },
+          { "name": "message", "label": "Message", "type": "textarea", "required": true }
+        ]
+      },
+      {
+        "name": "Create Channel",
+        "description": "Create a new Slack channel",
+        "fields": [
+          { "name": "name", "label": "Channel Name", "type": "text", "required": true },
+          { "name": "description", "label": "Description", "type": "text" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "name": "Typeform",
+    "icon": "FileText",
+    "category": "Forms", 
+    "triggers": [
+      {
+        "name": "Form Submitted",
+        "description": "Triggers when a form is submitted",
+        "fields": [
+          { "name": "formId", "label": "Form ID", "type": "text", "required": true }
+        ]
+      }
+    ],
+    "actions": []
+  },
+  {
+    "Id": 4,
+    "name": "HubSpot",
+    "icon": "Users",
+    "category": "CRM",
+    "triggers": [
+      {
+        "name": "New Contact",
+        "description": "Triggers when a new contact is created",
+        "fields": []
+      }
+    ],
+    "actions": [
+      {
+        "name": "Create Contact",
+        "description": "Create a new contact in HubSpot",
+        "fields": [
+          { "name": "firstName", "label": "First Name", "type": "text", "required": true },
+          { "name": "lastName", "label": "Last Name", "type": "text", "required": true },
+          { "name": "email", "label": "Email", "type": "email", "required": true },
+          { "name": "company", "label": "Company", "type": "text" }
+        ]
+      },
+      {
+        "name": "Update Contact",
+        "description": "Update an existing contact",
+        "fields": [
+          { "name": "contactId", "label": "Contact ID", "type": "text", "required": true },
+          { "name": "properties", "label": "Properties to Update", "type": "textarea" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "name": "Schedule",
+    "icon": "Clock",
+    "category": "Time",
+    "triggers": [
+      {
+        "name": "Daily at 8 AM",
+        "description": "Triggers daily at 8 AM",
+        "fields": [
+          { "name": "time", "label": "Time", "type": "time", "required": true, "default": "08:00" },
+          { "name": "timezone", "label": "Timezone", "type": "select", "options": ["America/New_York", "America/Los_Angeles", "Europe/London"] }
+        ]
+      },
+      {
+        "name": "Every Hour",
+        "description": "Triggers every hour",
+        "fields": []
+      },
+      {
+        "name": "Weekly",
+        "description": "Triggers weekly on a specific day",
+        "fields": [
+          { "name": "day", "label": "Day of Week", "type": "select", "options": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] },
+          { "name": "time", "label": "Time", "type": "time", "required": true }
+        ]
+      }
+    ],
+    "actions": []
+  },
+  {
+    "Id": 6,
+    "name": "Google Sheets",
+    "icon": "Sheet",
+    "category": "Productivity",
+    "triggers": [
+      {
+        "name": "New Row",
+        "description": "Triggers when a new row is added",
+        "fields": [
+          { "name": "spreadsheetId", "label": "Spreadsheet ID", "type": "text", "required": true }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Add Row",
+        "description": "Add a new row to a spreadsheet",
+        "fields": [
+          { "name": "spreadsheetId", "label": "Spreadsheet ID", "type": "text", "required": true },
+          { "name": "data", "label": "Row Data", "type": "textarea", "required": true }
+        ]
+      },
+      {
+        "name": "Generate Report",
+        "description": "Generate a report from spreadsheet data",
+        "fields": [
+          { "name": "spreadsheetId", "label": "Spreadsheet ID", "type": "text", "required": true },
+          { "name": "range", "label": "Data Range", "type": "text", "placeholder": "A1:Z1000" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "name": "Instagram",
+    "icon": "Instagram",
+    "category": "Social Media",
+    "triggers": [
+      {
+        "name": "New Post",
+        "description": "Triggers when a new post is published",
+        "fields": [
+          { "name": "account", "label": "Account", "type": "text", "placeholder": "@username" }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Create Post",
+        "description": "Create a new Instagram post",
+        "fields": [
+          { "name": "caption", "label": "Caption", "type": "textarea", "required": true },
+          { "name": "imageUrl", "label": "Image URL", "type": "url" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "name": "Twitter",
+    "icon": "Twitter",
+    "category": "Social Media",
+    "triggers": [
+      {
+        "name": "New Mention",
+        "description": "Triggers when you are mentioned in a tweet",
+        "fields": []
+      }
+    ],
+    "actions": [
+      {
+        "name": "Create Tweet",
+        "description": "Post a new tweet",
+        "fields": [
+          { "name": "text", "label": "Tweet Text", "type": "textarea", "required": true, "maxLength": 280 },
+          { "name": "includeImage", "label": "Include Image", "type": "checkbox" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "name": "Facebook",
+    "icon": "Facebook",
+    "category": "Social Media",
+    "triggers": [
+      {
+        "name": "Page Mention",
+        "description": "Triggers when your page is mentioned",
+        "fields": []
+      }
+    ],
+    "actions": [
+      {
+        "name": "Create Post",
+        "description": "Create a new Facebook post",
+        "fields": [
+          { "name": "message", "label": "Post Message", "type": "textarea", "required": true },
+          { "name": "includeImage", "label": "Include Image", "type": "checkbox" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "name": "Dropbox",
+    "icon": "Cloud",
+    "category": "Storage",
+    "triggers": [
+      {
+        "name": "New File",
+        "description": "Triggers when a new file is added",
+        "fields": [
+          { "name": "folder", "label": "Folder Path", "type": "text", "placeholder": "/Work/Projects" },
+          { "name": "fileTypes", "label": "File Types", "type": "text", "placeholder": ".pdf,.docx,.xlsx" }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Upload File",
+        "description": "Upload a file to Dropbox",
+        "fields": [
+          { "name": "folder", "label": "Destination Folder", "type": "text", "required": true },
+          { "name": "fileName", "label": "File Name", "type": "text", "required": true }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "name": "Google Drive",
+    "icon": "HardDrive",
+    "category": "Storage",
+    "triggers": [
+      {
+        "name": "File Modified",
+        "description": "Triggers when a file is modified",
+        "fields": [
+          { "name": "folderId", "label": "Folder ID", "type": "text" }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Upload File",
+        "description": "Upload a file to Google Drive",
+        "fields": [
+          { "name": "folder", "label": "Destination Folder", "type": "text", "required": true },
+          { "name": "renamePattern", "label": "Rename Pattern", "type": "text", "placeholder": "{{filename}}_backup_{{date}}" }
+        ]
+      },
+      {
+        "name": "Create Folder",
+        "description": "Create a new folder",
+        "fields": [
+          { "name": "name", "label": "Folder Name", "type": "text", "required": true },
+          { "name": "parentFolderId", "label": "Parent Folder ID", "type": "text" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 12,
+    "name": "Zendesk",
+    "icon": "HeadphonesIcon",
+    "category": "Support",
+    "triggers": [
+      {
+        "name": "New Ticket",
+        "description": "Triggers when a new support ticket is created",
+        "fields": [
+          { "name": "priority", "label": "Priority Level", "type": "select", "options": ["low", "normal", "high", "urgent"] }
+        ]
+      },
+      {
+        "name": "Ticket Updated",
+        "description": "Triggers when a ticket is updated",
+        "fields": []
+      }
+    ],
+    "actions": [
+      {
+        "name": "Update Ticket",
+        "description": "Update a support ticket",
+        "fields": [
+          { "name": "ticketId", "label": "Ticket ID", "type": "text", "required": true },
+          { "name": "status", "label": "Status", "type": "select", "options": ["open", "pending", "solved", "closed"] },
+          { "name": "comment", "label": "Comment", "type": "textarea" }
+        ]
+      }
+    ]
+  }
+]

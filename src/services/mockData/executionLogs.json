@@ -1,0 +1,245 @@
+[
+  {
+    "Id": 1,
+    "workflowId": "1",
+    "timestamp": "2024-01-21T14:22:00Z",
+    "status": "success",
+    "duration": 1.2,
+    "triggerData": {
+      "sender": "client@example.com",
+      "subject": "Urgent: Project deadline question",
+      "priority": "high"
+    },
+    "steps": [
+      {
+        "nodeId": "node-1",
+        "status": "success",
+        "duration": 0.3,
+        "message": "Email trigger activated"
+      },
+      {
+        "nodeId": "node-2", 
+        "status": "success",
+        "duration": 0.9,
+        "message": "Slack message sent successfully"
+      }
+    ],
+    "error": null
+  },
+  {
+    "Id": 2,
+    "workflowId": "3", 
+    "timestamp": "2024-01-21T08:00:00Z",
+    "status": "success",
+    "duration": 4.7,
+    "triggerData": {
+      "scheduled": true,
+      "time": "08:00",
+      "date": "2024-01-21"
+    },
+    "steps": [
+      {
+        "nodeId": "node-5",
+        "status": "success", 
+        "duration": 0.1,
+        "message": "Schedule trigger fired"
+      },
+      {
+        "nodeId": "node-6",
+        "status": "success",
+        "duration": 3.8,
+        "message": "Report generated from Google Sheets"
+      },
+      {
+        "nodeId": "node-7",
+        "status": "success",
+        "duration": 0.8, 
+        "message": "Email sent with report attachment"
+      }
+    ],
+    "error": null
+  },
+  {
+    "Id": 3,
+    "workflowId": "4",
+    "timestamp": "2024-01-20T16:30:00Z", 
+    "status": "success",
+    "duration": 2.1,
+    "triggerData": {
+      "postId": "instagram_12345",
+      "caption": "Excited to announce our new product launch! 🚀",
+      "imageUrl": "https://example.com/image.jpg"
+    },
+    "steps": [
+      {
+        "nodeId": "node-8",
+        "status": "success",
+        "duration": 0.2,
+        "message": "Instagram post detected"
+      },
+      {
+        "nodeId": "node-9",
+        "status": "success",
+        "duration": 0.9,
+        "message": "Tweet posted successfully"
+      },
+      {
+        "nodeId": "node-10",
+        "status": "success", 
+        "duration": 1.0,
+        "message": "Facebook post created"
+      }
+    ],
+    "error": null
+  },
+  {
+    "Id": 4,
+    "workflowId": "6",
+    "timestamp": "2024-01-21T09:15:00Z",
+    "status": "success",
+    "duration": 0.8,
+    "triggerData": {
+      "ticketId": "ZD-4567",
+      "subject": "Website is completely down",
+      "priority": "high",
+      "customer": "BigClient Corp"
+    },
+    "steps": [
+      {
+        "nodeId": "node-13",
+        "status": "success",
+        "duration": 0.1,
+        "message": "High priority ticket detected"
+      },
+      {
+        "nodeId": "node-14",
+        "status": "success",
+        "duration": 0.4,
+        "message": "Slack notification sent to #support-urgent"
+      },
+      {
+        "nodeId": "node-15",
+        "status": "success",
+        "duration": 0.3,
+        "message": "Email alert sent to support lead"
+      }
+    ],
+    "error": null
+  },
+  {
+    "Id": 5,
+    "workflowId": "1",
+    "timestamp": "2024-01-20T11:45:00Z",
+    "status": "error",
+    "duration": 0.5,
+    "triggerData": {
+      "sender": "newsletter@company.com",
+      "subject": "Monthly Newsletter - January 2024", 
+      "priority": "high"
+    },
+    "steps": [
+      {
+        "nodeId": "node-1",
+        "status": "success",
+        "duration": 0.2,
+        "message": "Email trigger activated"
+      },
+      {
+        "nodeId": "node-2",
+        "status": "error",
+        "duration": 0.3,
+        "message": "Failed to send Slack message"
+      }
+    ],
+    "error": "Slack API rate limit exceeded. Please try again later."
+  },
+  {
+    "Id": 6,
+    "workflowId": "2",
+    "timestamp": "2024-01-18T11:45:00Z",
+    "status": "success",
+    "duration": 1.8,
+    "triggerData": {
+      "formId": "contact-form-2024",
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@example.com",
+      "company": "Tech Solutions Inc"
+    },
+    "steps": [
+      {
+        "nodeId": "node-3",
+        "status": "success",
+        "duration": 0.1,
+        "message": "Form submission received"
+      },
+      {
+        "nodeId": "node-4",
+        "status": "success",
+        "duration": 1.7,
+        "message": "Contact created in HubSpot CRM"
+      }
+    ],
+    "error": null
+  },
+  {
+    "Id": 7,
+    "workflowId": "5",
+    "timestamp": "2024-01-19T15:20:00Z",
+    "status": "error",
+    "duration": 2.3,
+    "triggerData": {
+      "fileName": "Q4_Financial_Report.pdf",
+      "filePath": "/Work/Projects/Q4_Financial_Report.pdf",
+      "fileSize": 2048000
+    },
+    "steps": [
+      {
+        "nodeId": "node-11",
+        "status": "success",
+        "duration": 0.1,
+        "message": "New file detected in Dropbox"
+      },
+      {
+        "nodeId": "node-12",
+        "status": "error",
+        "duration": 2.2,
+        "message": "Failed to upload to Google Drive"
+      }
+    ],
+    "error": "Google Drive storage quota exceeded. Please free up space or upgrade your plan."
+  },
+  {
+    "Id": 8,
+    "workflowId": "3",
+    "timestamp": "2024-01-20T08:00:00Z",
+    "status": "success",
+    "duration": 5.1,
+    "triggerData": {
+      "scheduled": true,
+      "time": "08:00",
+      "date": "2024-01-20"
+    },
+    "steps": [
+      {
+        "nodeId": "node-5",
+        "status": "success",
+        "duration": 0.1,
+        "message": "Schedule trigger fired"
+      },
+      {
+        "nodeId": "node-6",
+        "status": "success",
+        "duration": 4.2,
+        "message": "Report generated from Google Sheets"
+      },
+      {
+        "nodeId": "node-7",
+        "status": "success",
+        "duration": 0.8,
+        "message": "Email sent with report attachment"
+      }
+    ],
+    "error": null
+  }
+]
