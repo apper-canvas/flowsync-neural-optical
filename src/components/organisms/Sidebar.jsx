@@ -46,10 +46,7 @@ const NavItem = ({ item, mobile = false }) => {
       return (
         <button
           onClick={() => {
-            const jwtToken = localStorage.getItem('jwt_token');
-            const billingUrl = jwtToken 
-              ? `${item.href}?token=${jwtToken}`
-              : item.href;
+const billingUrl = item.href;
             window.open(billingUrl, '_blank');
             mobile && setIsMobileOpen(false);
           }}
