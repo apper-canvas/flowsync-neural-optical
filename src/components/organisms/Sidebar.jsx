@@ -11,62 +11,101 @@ const Sidebar = () => {
     { 
       name: "Workflows", 
       href: "/", 
-      icon: "Workflow",
-      description: "Manage your automations" 
+      icon: "Workflow", 
+      description: "Build and manage workflows" 
     },
     { 
-      name: "Create", 
-      href: "/create", 
-      icon: "Plus",
-      description: "Build new workflows" 
-    },
-    { 
-      name: "History", 
+      name: "Execution History", 
       href: "/history", 
-      icon: "History",
-      description: "View execution logs" 
+      icon: "History", 
+      description: "View workflow runs" 
+    },
+    { 
+      name: "Canvas Builder", 
+      href: "/create", 
+      icon: "Plus", 
+      description: "Create new workflow" 
     },
     { 
       name: "Templates", 
       href: "/templates", 
-      icon: "Layout",
+      icon: "FileText", 
       description: "Pre-built automations" 
+    },
+    { 
+      name: "Billing Portal", 
+      href: "https://test-billing.apper.io", 
+      icon: "CreditCard", 
+      description: "Manage billing and payments" 
     }
   ];
 
-  const NavItem = ({ item, mobile = false }) => (
-    <NavLink
-      to={item.href}
-      onClick={() => mobile && setIsMobileOpen(false)}
-      className={({ isActive }) =>
-        cn(
-          "group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200",
-          isActive
-            ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg"
-            : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-        )
-      }
-    >
-      <ApperIcon 
-        name={item.icon} 
-        className={cn(
-          "mr-3 w-5 h-5 transition-colors",
-          location.pathname === item.href ? "text-white" : "text-gray-400 group-hover:text-gray-600"
-        )} 
-      />
-      <div className="flex-1 min-w-0">
-        <div className="font-medium">{item.name}</div>
-        {!mobile && (
-          <div className={cn(
-            "text-xs mt-0.5 truncate",
-            location.pathname === item.href ? "text-white/80" : "text-gray-500"
-          )}>
-            {item.description}
+const NavItem = ({ item, mobile = false }) => {
+    // Handle billing portal as external link
+    if (item.name === "Billing Portal") {
+      return (
+        <button
+          onClick={() => {
+            const jwtToken = localStorage.getItem('jwt_token');
+            const billingUrl = jwtToken 
+              ? `${item.href}?token=${jwtToken}`
+              : item.href;
+            window.open(billingUrl, '_blank');
+            mobile && setIsMobileOpen(false);
+          }}
+          className="w-full group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+        >
+          <ApperIcon 
+            name={item.icon} 
+            className="mr-3 w-5 h-5 transition-colors text-gray-400 group-hover:text-gray-600" 
+          />
+          <div className="flex-1 min-w-0">
+            <div className="font-medium">{item.name}</div>
+            {!mobile && (
+              <div className="text-xs mt-0.5 truncate text-gray-500">
+                {item.description}
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </NavLink>
-  );
+        </button>
+      );
+    }
+
+    // Regular internal navigation item
+    return (
+      <NavLink
+        to={item.href}
+        onClick={() => mobile && setIsMobileOpen(false)}
+        className={({ isActive }) =>
+          cn(
+            "group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200",
+            isActive
+              ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg"
+              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+          )
+        }
+      >
+        <ApperIcon 
+          name={item.icon} 
+          className={cn(
+            "mr-3 w-5 h-5 transition-colors",
+            location.pathname === item.href ? "text-white" : "text-gray-400 group-hover:text-gray-600"
+          )} 
+        />
+        <div className="flex-1 min-w-0">
+          <div className="font-medium">{item.name}</div>
+          {!mobile && (
+            <div className={cn(
+              "text-xs mt-0.5 truncate",
+              location.pathname === item.href ? "text-white/80" : "text-gray-500"
+            )}>
+              {item.description}
+            </div>
+          )}
+        </div>
+      </NavLink>
+    );
+  };
 
   return (
     <>
