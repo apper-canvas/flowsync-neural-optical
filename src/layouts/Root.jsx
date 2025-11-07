@@ -147,7 +147,6 @@ export default function Root() {
 
   return (
     <AuthContext.Provider value={{ logout, isInitialized: authInitialized }}>
-      <div id="authentication"></div>
       <Outlet />
     </AuthContext.Provider>
   );
